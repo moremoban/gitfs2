@@ -1,0 +1,13 @@
+name: "gitfs2"
+organisation: "moremoban"
+author: "C.W."
+contact: "wangc_2011@hotmail.com"
+company: "moban dev team"
+version: "0.0.1"
+current_version: "0.0.1"
+release: "0.0.0"
+copyright_year: 2019
+license: MIT
+dependencies: []
+description: "Python file system 2 over GitPython"
+moban_command: make format git-diff-check
