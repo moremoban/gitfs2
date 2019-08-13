@@ -32,6 +32,11 @@ AUTHOR = "C.W."
 VERSION = "0.0.1"
 EMAIL = "wangc_2011@hotmail.com"
 LICENSE = "MIT"
+ENTRY_POINTS = {
+    "fs.opener": [
+        "git = gitfs2:GitFSOpener",
+    ],
+}
 DESCRIPTION = (
     "Python file system 2 over GitPython"
 )
@@ -60,12 +65,16 @@ CLASSIFIERS = [
 ]
 
 INSTALL_REQUIRES = [
+    "fs",
+    "crayons",
+    "GitPython",
 ]
 SETUP_COMMANDS = {}
 
 
 PACKAGES = find_packages(exclude=["ez_setup", "examples", "tests"])
-EXTRAS_REQUIRE = {}
+EXTRAS_REQUIRE = {
+}
 # You do not need to read beyond this line
 PUBLISH_COMMAND = "{0} setup.py sdist bdist_wheel upload -r pypi".format(sys.executable)
 GS_COMMAND = ("gs gitfs2 v0.0.0 " +
@@ -195,6 +204,7 @@ if __name__ == "__main__":
         packages=PACKAGES,
         include_package_data=True,
         zip_safe=False,
+        entry_points=ENTRY_POINTS,
         classifiers=CLASSIFIERS,
         cmdclass=SETUP_COMMANDS
     )

@@ -7,6 +7,9 @@ name = 'pypi'
 python_version= '3.6'
 
 [packages]
+fs = "*"
+crayons = "*"
+GitPython = "*"
 
 [dev-packages]
 nose = "*"
