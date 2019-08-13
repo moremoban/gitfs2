@@ -9,8 +9,6 @@ targets:
   - requirements.txt: requirements.txt.jj2
   - "tests/requirements.txt": "tests/custom_requirements.txt.jj2"
   - "docs/source/conf.py": "docs/conf.py_t"
-  - test.sh: test.script.jj2
-  - test.bat: test.script.jj2
   - "gitfs2/_version.py": "_version.py.jj2"
   - .gitignore: gitignore.jj2
   - .travis.yml: travis.yml.jj2
