@@ -16,5 +16,5 @@ entry_points:
   fs.opener:
     - "git = gitfs2:GitFSOpener"
 description: "Python file system 2 over GitPython"
-moban_command: make format git-diff-check
-lint_command: make lint
+moban_command: moban
+lint_command: make install_test lint format git-diff-check

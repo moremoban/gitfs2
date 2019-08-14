@@ -37,14 +37,16 @@ stages:
     submodules: false
   python: 3.6
   stage: lint
-  script: make lint
+  script: make install_test lint format git-diff-check
 
 .moban: &moban
   <<: *disable_global
   python: 3.6
   stage: moban
   install: pip install moban>=0.0.4
-  script: make format git-diff-check
+  script:
+    - moban
+    - git diff --exit-code
 
 jobs:
   include:
