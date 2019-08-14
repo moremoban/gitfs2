@@ -44,9 +44,7 @@ stages:
   python: 3.6
   stage: moban
   install: pip install moban>=0.0.4
-  script:
-    - moban
-    - git diff --exit-code
+  script: python setup.py develop && moban && make git-diff-check
 
 jobs:
   include:
