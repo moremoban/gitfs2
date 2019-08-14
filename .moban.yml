@@ -1,6 +1,6 @@
 configuration:
   template_dir:
-  - "git://github.com/moremoban/pypi-mobans.git?submodule=true!/templates"
+  - "git://github.com/moremoban/pypi-mobans.git?submodule=true&branch=dev!/templates"
   - ".moban.d"
   configuration: gitfs2.yml
 targets:

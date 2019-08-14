@@ -5,7 +5,7 @@ import subprocess
 
 import fs
 import fs.path
-from gitfs2 import constants, reporter
+from gitfs2 import reporter, constants
 
 
 class GitRequire(object):
@@ -41,7 +41,7 @@ class GitRequire(object):
 
 
 def convert_submodule(submodule_string):
-    if submodule_string in ['1', 'True', 'true']:
+    if submodule_string in ["1", "True", "true"]:
         return True
     return False
 
@@ -93,9 +93,7 @@ def get_repo_name(repo_url):
         repo = giturlparse.parse(repo_url.rstrip("/"))
         return repo.name
     except ParserError:
-        reporter.error(
-            constants.MESSAGE_INVALID_GIT_URL % repo_url
-        )
+        reporter.error(constants.MESSAGE_INVALID_GIT_URL % repo_url)
         raise
 
 

@@ -1,13 +1,14 @@
 import fs.path
-from mock import patch
 from gitfs2.repo import (
+    GitRequire,
     git_clone,
-    get_repo_name,
     get_app_home,
+    get_repo_name,
     make_sure_git_is_available,
 )
+
+from mock import patch
 from nose.tools import eq_, raises
-from gitfs2.repo import GitRequire
 
 
 @patch("appdirs.user_cache_dir", return_value="root")
@@ -20,7 +21,7 @@ class TestGitFunctions:
         self.repo = "https://github.com/my/" + self.repo_name
         self.require = GitRequire(git_url=self.repo)
         self.require_with_submodule = GitRequire(
-            git_url=self.repo, submodule='True'
+            git_url=self.repo, submodule="True"
         )
         self.require_with_branch = GitRequire(
             git_url=self.repo, branch="ghpages"
