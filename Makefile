@@ -1,5 +1,8 @@
 all: test
 
+install_test:
+	pip install -r tests/requirements.txt
+
 test: lint
 	bash test.sh
 
