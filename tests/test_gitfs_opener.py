@@ -1,8 +1,7 @@
 import fs
-from gitfs2.repo import GitRequire
-
 from mock import patch
 from nose.tools import ok_
+from gitfs2.repo import GitRequire
 
 
 @patch("gitfs2.repo.git_clone")

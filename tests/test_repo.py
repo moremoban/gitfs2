@@ -1,4 +1,6 @@
 import fs.path
+from mock import patch
+from nose.tools import eq_, raises
 from gitfs2.repo import (
     GitRequire,
     git_clone,
@@ -6,9 +8,6 @@ from gitfs2.repo import (
     get_repo_name,
     make_sure_git_is_available,
 )
-
-from mock import patch
-from nose.tools import eq_, raises
 
 
 @patch("appdirs.user_cache_dir", return_value="root")
