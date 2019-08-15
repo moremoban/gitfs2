@@ -1,5 +1,5 @@
 import fs
-from gitfs2.repo import git_clone, GitRequire
+from gitfs2.repo import GitRequire, git_clone
 
 
 def test_clone_a_real_github():

@@ -1,4 +1,5 @@
 import fs.path
+import fs.errors
 from mock import patch
 from nose.tools import eq_, raises
 from gitfs2.repo import (
@@ -12,7 +13,7 @@ from gitfs2.repo import (
 
 @patch("appdirs.user_cache_dir", return_value="root")
 @patch("gitfs2.repo.mkdir_p")
-@patch("os.path.exists")
+@patch("fs.open_fs")
 @patch("git.Repo", autospec=True)
 class TestGitFunctions:
     def setUp(self):
@@ -33,7 +34,7 @@ class TestGitFunctions:
         )
 
     def test_checkout_new(self, fake_repo, local_folder_exists, *_):
-        local_folder_exists.return_value = False
+        local_folder_exists.side_effect = [fs.errors.CreateFailed]
         git_clone(self.require)
         fake_repo.clone_from.assert_called_with(
             self.repo,
@@ -47,7 +48,7 @@ class TestGitFunctions:
     def test_checkout_new_with_submodules(
         self, fake_repo, local_folder_exists, *_
     ):
-        local_folder_exists.return_value = False
+        local_folder_exists.side_effect = [fs.errors.CreateFailed]
         git_clone(self.require_with_submodule)
         fake_repo.clone_from.assert_called_with(
             self.repo,
@@ -59,7 +60,6 @@ class TestGitFunctions:
         repo.git.submodule.assert_called_with("update", "--init")
 
     def test_git_update(self, fake_repo, local_folder_exists, *_):
-        local_folder_exists.return_value = True
         git_clone(self.require)
         fake_repo.assert_called_with(self.expected_local_repo_path)
         repo = fake_repo.return_value
@@ -68,7 +68,6 @@ class TestGitFunctions:
     def test_git_update_with_submodules(
         self, fake_repo, local_folder_exists, *_
     ):
-        local_folder_exists.return_value = True
         git_clone(self.require_with_submodule)
         fake_repo.assert_called_with(self.expected_local_repo_path)
         repo = fake_repo.return_value
@@ -77,7 +76,7 @@ class TestGitFunctions:
     def test_checkout_new_with_branch(
         self, fake_repo, local_folder_exists, *_
     ):
-        local_folder_exists.return_value = False
+        local_folder_exists.side_effect = [fs.errors.CreateFailed]
         git_clone(self.require_with_branch)
         fake_repo.clone_from.assert_called_with(
             self.repo,
@@ -92,7 +91,6 @@ class TestGitFunctions:
     def test_update_existing_with_branch_parameter(
         self, fake_repo, local_folder_exists, *_
     ):
-        local_folder_exists.return_value = True
         git_clone(self.require_with_branch)
         repo = fake_repo.return_value
         repo.git.checkout.assert_called_with("ghpages")
@@ -100,7 +98,7 @@ class TestGitFunctions:
     def test_checkout_new_with_reference(
         self, fake_repo, local_folder_exists, *_
     ):
-        local_folder_exists.return_value = False
+        local_folder_exists.side_effect = [fs.errors.CreateFailed]
         git_clone(self.require_with_reference)
         fake_repo.clone_from.assert_called_with(
             self.repo,
@@ -115,7 +113,6 @@ class TestGitFunctions:
     def test_update_existing_with_reference_parameter(
         self, fake_repo, local_folder_exists, *_
     ):
-        local_folder_exists.return_value = True
         git_clone(self.require_with_reference)
         repo = fake_repo.return_value
         repo.git.checkout.assert_called_with("a-commit-reference")

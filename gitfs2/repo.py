@@ -5,6 +5,7 @@ import subprocess
 
 import fs
 import fs.path
+import fs.errors
 from gitfs2 import reporter, constants
 
 
