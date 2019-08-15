@@ -59,10 +59,11 @@ def git_clone(require, action_required=True):
     mkdir_p(app_home)
 
     repo_name = get_repo_name(require.git_url)
-    local_repo_folder = os.path.join(app_home, repo_name)
+    local_repo_folder = fs.path.join(app_home, repo_name)
 
     if action_required:
-        if os.path.exists(local_repo_folder):
+        try:
+            fs.open_fs(local_repo_folder)
             reporter.info("Found repo in %s" % local_repo_folder)
             repo = Repo(local_repo_folder)
             repo.git.pull()
@@ -73,7 +74,7 @@ def git_clone(require, action_required=True):
             if require.submodule:
                 reporter.info("updating submodule")
                 repo.git.submodule("update")
-        else:
+        except fs.errors.CreateFailed:
             reporter.info("git clone %s" % require.git_url)
             repo = Repo.clone_from(
                 require.git_url, local_repo_folder, **require.clone_params()

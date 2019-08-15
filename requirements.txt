@@ -1,3 +1,4 @@
 fs
 crayons
 GitPython
+git-url-parse>=1.2.2

@@ -10,6 +10,7 @@ python_version= '3.6'
 fs = "*"
 crayons = "*"
 GitPython = "*"
+git-url-parse = '>=1.2.2'
 
 [dev-packages]
 nose = "*"

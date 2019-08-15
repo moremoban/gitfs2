@@ -12,6 +12,7 @@ dependencies:
   - fs
   - crayons
   - GitPython
+  - git-url-parse>=1.2.2
 entry_points:
   fs.opener:
     - "git = gitfs2:GitFSOpener"
