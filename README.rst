@@ -36,8 +36,6 @@ Get from a different branch
 
 .. code-block:: python
 
-.. code-block:: python
-
     >>> import fs
     >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git?branch=master!/templates")
     >>> git_fs.read("_version.py.jj2")
@@ -46,8 +44,6 @@ Get from a different branch
 
 Checkout submodules recursively
 --------------------------------------------------------------------------------
-
-.. code-block:: python
 
 .. code-block:: python
 
