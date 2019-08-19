@@ -67,7 +67,15 @@ Plus, the intention is never to write to a repository.
 Installation
 ================================================================================
 
-You can get it:
+
+You can install gitfs2 via pip:
+
+.. code-block:: bash
+
+    $ pip install gitfs2
+
+
+or clone it and install it:
 
 .. code-block:: bash
 
