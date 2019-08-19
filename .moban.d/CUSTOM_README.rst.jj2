@@ -1,6 +1,60 @@
 {% extends 'README.rst.jj2' %}
 
 {%block documentation_link%}
-.. image:: https://dev.azure.com/{{orgnisation}}/{{name}}/_apis/build/status/{{orgnisation}}.{{name}}?branchName=master
+.. image:: https://dev.azure.com/{{organisation}}/{{name}}/_apis/build/status/{{organisation}}.{{name}}?branchName=master
    :target: https://dev.azure.com/{{organisation}}/{{name}}/_build/latest?definitionId=2&branchName=master
 {%endblock%}
+
+{% block features %}
+
+It helps perform `file operations <https://docs.pyfilesystem.org/en/latest/guide.html>`_ over a git repository.
+It clones the git repository and returns python file system 2's `OSFS <https://docs.pyfilesystem.org/en/latest/reference/osfs.html>`_ instance.
+
+The idea originates from `moban <https://github.com/moremoban/moban>`_, which uses git repositories as
+a vehicle to have versioned templates for the creation of a new python package. Surely, it can be implemented
+in any other ways but moban v0.6.0 mandates python file system 2 interface. Hence this library is written.
+
+Get a file inside a python package
+--------------------------------------------------------------------------------
+
+.. code-block:: python
+
+    >>> import fs
+    >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git!/templates")
+    >>> git_fs.readtext("_version.py.jj2")
+    '__version__ = "{{version}}"\n__author__ = "{{author}}"\n'
+
+
+Get from a different branch
+--------------------------------------------------------------------------------
+
+.. code-block:: python
+
+.. code-block:: python
+
+    >>> import fs
+    >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git?branch=master!/templates")
+    >>> git_fs.read("_version.py.jj2")
+    '__version__ = "{{version}}"\n__author__ = "{{author}}"\n'
+
+
+Checkout submodules recursively
+--------------------------------------------------------------------------------
+
+.. code-block:: python
+
+.. code-block:: python
+
+    >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git?branch=master&submodule=true!/templates")
+
+
+Does it write?
+--------------------------------------------------------------------------------
+
+Yes locally, it will write as you can do so without using gitfs2. And no, it does help
+commit and push the changes for you.
+
+Plus, the intention is never to write to a repository.
+
+
+{% endblock %}
