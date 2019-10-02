@@ -2,8 +2,14 @@ name: gitfs2
 organisation: moremoban
 releases:
 - changes:
+  - action: Fix
+    details:
+    - "`#4`: failed to checkout more than one git repo."
+  version: 0.0.2
+  date: 2.10.2019
+- changes:
   - action: first release
     details:
     - what a feat!
   version: 0.0.1
-  date: 
+  date: 19.08.2019

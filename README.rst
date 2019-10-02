@@ -28,7 +28,7 @@ Get a file inside a python package
     >>> import fs
     >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git!/templates")
     >>> git_fs.readtext("_version.py.jj2")
-    '__version__ = "0.0.1"\n__author__ = "C.W."\n'
+    '__version__ = "0.0.2"\n__author__ = "C.W."\n'
 
 
 Get from a different branch
@@ -39,7 +39,7 @@ Get from a different branch
     >>> import fs
     >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git?branch=master!/templates")
     >>> git_fs.read("_version.py.jj2")
-    '__version__ = "0.0.1"\n__author__ = "C.W."\n'
+    '__version__ = "0.0.2"\n__author__ = "C.W."\n'
 
 
 Checkout submodules recursively

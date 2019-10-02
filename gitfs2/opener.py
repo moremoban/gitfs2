@@ -5,7 +5,7 @@ from fs.opener import Opener
 
 class GitFSOpener(Opener):
     protocols = ["git"]
-    update = True
+    update_registry = {}
 
     def open_fs(self, fs_url, parse_result, writeable, create, cwd):
         repo_name, _, dir_path = parse_result.resource.partition("/")
@@ -19,10 +19,10 @@ class GitFSOpener(Opener):
             reference=parse_result.params.get("reference"),
         )
         local_folder = repo.git_clone(
-            require, action_required=GitFSOpener.update
+            require, action_required=GitFSOpener.update_registry.get(git_url, True)
         )
-        if GitFSOpener.update:
-            GitFSOpener.update = False
+        if GitFSOpener.update_registry.get(git_url, True):
+            GitFSOpener.update_registry[git_url] = False
         if parse_result.path:
             local_folder = local_folder + parse_result.path
         osfs = OSFS(root_path=local_folder)
