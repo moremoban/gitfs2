@@ -1,8 +1,8 @@
 import os
 import sys
 import errno
-import subprocess
 import logging
+import subprocess
 
 import fs
 import fs.path
