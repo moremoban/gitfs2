@@ -18,6 +18,7 @@ class GitFSOpener(Opener):
             submodule=parse_result.params.get("submodule"),
             reference=parse_result.params.get("reference"),
         )
+
         local_folder = repo.git_clone(
             require, action_required=GitFSOpener.update_registry.get(git_url, True)
         )

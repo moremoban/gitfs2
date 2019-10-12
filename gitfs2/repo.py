@@ -2,11 +2,14 @@ import os
 import sys
 import errno
 import subprocess
+import logging
 
 import fs
 import fs.path
 import fs.errors
 from gitfs2 import reporter, constants
+
+LOG = logging.getLogger(__name__)
 
 
 class GitRequire(object):
@@ -49,6 +52,7 @@ def convert_submodule(submodule_string):
 
 def git_clone(require, action_required=True):
     from git import Repo
+    from git.exc import GitCommandError
 
     if sys.platform != "win32":
         # Unfortunately for windows user, the following function
@@ -83,6 +87,10 @@ def git_clone(require, action_required=True):
             if require.submodule:
                 reporter.info("checking out submodule")
                 repo.git.submodule("update", "--init")
+        except GitCommandError as e:
+            reporter.warn("Unable to run git commands")
+            LOG.warn(e)
+            return local_repo_folder
 
     return local_repo_folder
 
