@@ -4,6 +4,12 @@ releases:
 - changes:
   - action: Fix
     details:
+    - "`#5`: support offline"
+  version: 0.0.3
+  date: tbd
+- changes:
+  - action: Fix
+    details:
     - "`#4`: failed to checkout more than one git repo."
   version: 0.0.2
   date: 2.10.2019
