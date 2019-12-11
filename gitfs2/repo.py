@@ -69,7 +69,7 @@ def git_clone(require, action_required=True):
     if action_required:
         try:
             fs.open_fs(local_repo_folder)
-            reporter.info("Found repo in %s" % local_repo_folder)
+            reporter.info(constants.MESSAGE_FOUND_REPO_FMT % local_repo_folder)
             repo = Repo(local_repo_folder)
             repo.git.pull()
             if require.reference:
@@ -77,18 +77,18 @@ def git_clone(require, action_required=True):
             elif require.branch:
                 repo.git.checkout(require.branch)
             if require.submodule:
-                reporter.info("updating submodule")
+                reporter.info(constants.MESSAGE_UPDATE_SUBMODULE)
                 repo.git.submodule("update")
         except fs.errors.CreateFailed:
-            reporter.info("git clone %s" % require.git_url)
+            reporter.info(constants.MESSAGE_GIT_CLONE_FMT % require.git_url)
             repo = Repo.clone_from(
                 require.git_url, local_repo_folder, **require.clone_params()
             )
             if require.submodule:
-                reporter.info("checking out submodule")
+                reporter.info(constants.MESSAGE_CHECKOUT_SUBMODULE)
                 repo.git.submodule("update", "--init")
         except GitCommandError as e:
-            reporter.warn("Unable to run git commands. Offline?")
+            reporter.warn(constants.MESSAGE_GIT_COMMAND_PROBLEM)
             LOG.warn(e)
             return local_repo_folder
 
@@ -103,7 +103,7 @@ def get_repo_name(repo_url):
         repo = giturlparse.parse(repo_url.rstrip("/"))
         return repo.name
     except ParserError:
-        reporter.error(constants.MESSAGE_INVALID_GIT_URL % repo_url)
+        reporter.error(constants.MESSAGE_INVALID_GIT_URL_FMT % repo_url)
         raise
 
 
