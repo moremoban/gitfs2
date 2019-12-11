@@ -47,10 +47,14 @@ Checkout submodules recursively
 Does it write?
 --------------------------------------------------------------------------------
 
-Yes locally, it will write as you can do so without using gitfs2. And no, it does help
-commit and push the changes for you.
+Yes locally, it will write as you can do so without using gitfs2. And no, it
+does not help commit and push the changes for you.
 
 Plus, the intention is never to write to a repository.
 
+License
+--------------------------------------------------------------------------------
+
+MIT
 
 {% endblock %}
