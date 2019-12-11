@@ -88,7 +88,7 @@ def git_clone(require, action_required=True):
                 reporter.info("checking out submodule")
                 repo.git.submodule("update", "--init")
         except GitCommandError as e:
-            reporter.warn("Unable to run git commands")
+            reporter.warn("Unable to run git commands. Offline?")
             LOG.warn(e)
             return local_repo_folder
 
