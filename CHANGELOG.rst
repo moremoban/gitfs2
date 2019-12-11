@@ -7,6 +7,7 @@ Change log
 **Fix**
 
 #. `#5 <https://github.com/moremoban/gitfs2/issues/5>`_: support offline
+#. `#7 <https://github.com/moremoban/gitfs2/issues/7>`_: add license text
 
 0.0.2 - 2.10.2019
 --------------------------------------------------------------------------------

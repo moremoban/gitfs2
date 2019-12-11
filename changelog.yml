@@ -5,6 +5,7 @@ releases:
   - action: Fix
     details:
     - "`#5`: support offline"
+    - "`#7`: add license text"
   version: 0.0.3
   date: tbd
 - changes:
