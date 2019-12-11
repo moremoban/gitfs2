@@ -1,6 +1,5 @@
 import fs.path
 import fs.errors
-from mock import MagicMock, patch
 from nose.tools import eq_, raises
 from gitfs2.repo import (
     GitRequire,
@@ -9,6 +8,11 @@ from gitfs2.repo import (
     get_repo_name,
     make_sure_git_is_available,
 )
+
+try:
+    from mock import MagicMock, patch
+except ImportError:
+    from unittest.mock import MagicMock, patch
 
 
 @patch("appdirs.user_cache_dir", return_value="root")
