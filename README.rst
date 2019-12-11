@@ -8,6 +8,12 @@ gitfs2
 .. image:: https://codecov.io/github/moremoban/gitfs2/coverage.png
    :target: https://codecov.io/github/moremoban/gitfs2
 
+.. image:: https://badge.fury.io/py/gitfs2.svg
+   :target: https://pypi.org/project/gitfs2
+
+.. image:: https://pepy.tech/badge/gitfs2/month
+   :target: https://pepy.tech/project/gitfs2/month
+
 
 .. image:: https://dev.azure.com/moremoban/gitfs2/_apis/build/status/moremoban.gitfs2?branchName=master
    :target: https://dev.azure.com/moremoban/gitfs2/_build/latest?definitionId=2&branchName=master
@@ -28,7 +34,7 @@ Get a file inside a python package
     >>> import fs
     >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git!/templates")
     >>> git_fs.readtext("_version.py.jj2")
-    '__version__ = "0.0.2"\n__author__ = "C.W."\n'
+    '__version__ = "0.0.3"\n__author__ = "C.W."\n'
 
 
 Get from a different branch
@@ -39,7 +45,7 @@ Get from a different branch
     >>> import fs
     >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git?branch=master!/templates")
     >>> git_fs.read("_version.py.jj2")
-    '__version__ = "0.0.2"\n__author__ = "C.W."\n'
+    '__version__ = "0.0.3"\n__author__ = "C.W."\n'
 
 
 Checkout submodules recursively
@@ -53,11 +59,15 @@ Checkout submodules recursively
 Does it write?
 --------------------------------------------------------------------------------
 
-Yes locally, it will write as you can do so without using gitfs2. And no, it does help
-commit and push the changes for you.
+Yes locally, it will write as you can do so without using gitfs2. And no, it
+does not help commit and push the changes for you.
 
 Plus, the intention is never to write to a repository.
 
+License
+--------------------------------------------------------------------------------
+
+MIT
 
 
 Installation

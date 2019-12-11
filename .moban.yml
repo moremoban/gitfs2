@@ -8,7 +8,6 @@ targets:
   - setup.py: custom_setup.py.jj2
   - requirements.txt: requirements.txt.jj2
   - "tests/requirements.txt": "tests/custom_requirements.txt.jj2"
-  - "docs/source/conf.py": "docs/conf.py_t"
   - "gitfs2/_version.py": "_version.py.jj2"
   - .gitignore: gitignore.jj2
   - .travis.yml: travis.yml.jj2
@@ -17,3 +16,4 @@ targets:
     configuration: changelog.yml
     template: CHANGELOG.rst.jj2
   - lint.sh: lint.script.jj2
+  - LICENSE: mit_license.jj2

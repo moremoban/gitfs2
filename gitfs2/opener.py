@@ -18,8 +18,10 @@ class GitFSOpener(Opener):
             submodule=parse_result.params.get("submodule"),
             reference=parse_result.params.get("reference"),
         )
+
         local_folder = repo.git_clone(
-            require, action_required=GitFSOpener.update_registry.get(git_url, True)
+            require,
+            action_required=GitFSOpener.update_registry.get(git_url, True),
         )
         if GitFSOpener.update_registry.get(git_url, True):
             GitFSOpener.update_registry[git_url] = False

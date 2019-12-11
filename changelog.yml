@@ -2,7 +2,14 @@ name: gitfs2
 organisation: moremoban
 releases:
 - changes:
-  - action: Fix
+  - action: Added
+    details:
+    - "`#5`: support offline"
+    - "`#7`: add license text"
+  version: 0.0.3
+  date: 11.12.2019
+- changes:
+  - action: Fixed
     details:
     - "`#4`: failed to checkout more than one git repo."
   version: 0.0.2

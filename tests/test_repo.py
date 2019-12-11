@@ -1,6 +1,5 @@
 import fs.path
 import fs.errors
-from mock import patch
 from nose.tools import eq_, raises
 from gitfs2.repo import (
     GitRequire,
@@ -9,6 +8,11 @@ from gitfs2.repo import (
     get_repo_name,
     make_sure_git_is_available,
 )
+
+try:
+    from mock import MagicMock, patch
+except ImportError:
+    from unittest.mock import MagicMock, patch
 
 
 @patch("appdirs.user_cache_dir", return_value="root")
@@ -116,6 +120,20 @@ class TestGitFunctions:
         git_clone(self.require_with_reference)
         repo = fake_repo.return_value
         repo.git.checkout.assert_called_with("a-commit-reference")
+
+    @patch("gitfs2.repo.reporter.warn")
+    def test_update_failed_because_offline(
+        self, fake_warn, fake_repo, local_folder_exists, *_
+    ):
+        from git.exc import GitCommandError
+
+        repo = MagicMock(autospec=True)
+        fake_repo.return_value = repo
+
+        repo.git.pull.side_effect = [GitCommandError("a", "b")]
+        git_clone(self.require_with_reference)
+
+        fake_warn.assert_called_with("Unable to run git commands. Offline?")
 
 
 def test_get_repo_name():
