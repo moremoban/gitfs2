@@ -7,13 +7,14 @@ gitfs2
 
 .. image:: https://codecov.io/github/moremoban/gitfs2/coverage.png
    :target: https://codecov.io/github/moremoban/gitfs2
-
 .. image:: https://badge.fury.io/py/gitfs2.svg
    :target: https://pypi.org/project/gitfs2
 
 .. image:: https://pepy.tech/badge/gitfs2/month
    :target: https://pepy.tech/project/gitfs2/month
 
+.. image:: https://img.shields.io/github/stars/moremoban/gitfs2.svg?style=social&maxAge=3600&label=Star
+    :target: https://github.com/moremoban/gitfs2/stargazers
 
 .. image:: https://dev.azure.com/moremoban/gitfs2/_apis/build/status/moremoban.gitfs2?branchName=master
    :target: https://dev.azure.com/moremoban/gitfs2/_build/latest?definitionId=2&branchName=master
@@ -63,6 +64,25 @@ Yes locally, it will write as you can do so without using gitfs2. And no, it
 does not help commit and push the changes for you.
 
 Plus, the intention is never to write to a repository.
+
+Primary use case
+--------------------------------------------------------------------------------
+
+You can do the following with moban:
+
+.. code-block:: bash
+
+    $ moban -t 'git://github.com/moremoban/pypi-mobans.git!/templates/_version.py.jj2' \
+            -c 'git://github.com/moremoban/pypi-mobans.git!/config/data.yml' \
+            -o _version.py
+    Info: Found repo in /Users/jaska/Library/Caches/gitfs2/repos/pypi-mobans
+    Templating git://github.com/moremoban/pypi-mobans.git!/templates/_version.py.jj2 to _version.py
+    Templated 1 file.
+    $ cat _version.py
+    __version__ = "0.1.1rc3"
+    __author__ = "C.W."
+
+
 
 License
 --------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+You can do the following with moban:
+
+.. code-block:: bash
+
+    $ moban -t 'git://github.com/moremoban/pypi-mobans.git!/templates/_version.py.jj2' \
+            -c 'git://github.com/moremoban/pypi-mobans.git!/config/data.yml' \
+            -o _version.py
+    Info: Found repo in /Users/jaska/Library/Caches/gitfs2/repos/pypi-mobans
+    Templating git://github.com/moremoban/pypi-mobans.git!/templates/_version.py.jj2 to _version.py
+    Templated 1 file.
+    $ cat _version.py
+    __version__ = "0.1.1rc3"
+    __author__ = "C.W."
+

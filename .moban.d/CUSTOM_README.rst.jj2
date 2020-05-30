@@ -52,6 +52,12 @@ does not help commit and push the changes for you.
 
 Plus, the intention is never to write to a repository.
 
+Primary use case
+--------------------------------------------------------------------------------
+
+{% include "gitfs2_example.rst.jj2" %}
+
+
 License
 --------------------------------------------------------------------------------
 
