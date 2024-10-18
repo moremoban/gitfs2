@@ -11,10 +11,16 @@ gitfs2
    :target: https://pypi.org/project/gitfs2
 
 .. image:: https://pepy.tech/badge/gitfs2/month
-   :target: https://pepy.tech/project/gitfs2/month
+   :target: https://pepy.tech/project/gitfs2
 
 .. image:: https://img.shields.io/github/stars/moremoban/gitfs2.svg?style=social&maxAge=3600&label=Star
     :target: https://github.com/moremoban/gitfs2/stargazers
+
+.. image:: https://img.shields.io/static/v1?label=continuous%20templating&message=%E6%A8%A1%E7%89%88%E6%9B%B4%E6%96%B0&color=blue&style=flat-square
+    :target: https://moban.readthedocs.io/en/latest/#at-scale-continous-templating-for-open-source-projects
+
+.. image:: https://img.shields.io/static/v1?label=coding%20style&message=black&color=black&style=flat-square
+    :target: https://github.com/psf/black
 
 .. image:: https://dev.azure.com/moremoban/gitfs2/_apis/build/status/moremoban.gitfs2?branchName=master
    :target: https://dev.azure.com/moremoban/gitfs2/_build/latest?definitionId=2&branchName=master
@@ -35,7 +41,7 @@ Get a file inside a python package
     >>> import fs
     >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git!/templates")
     >>> git_fs.readtext("_version.py.jj2")
-    '__version__ = "0.0.3"\n__author__ = "C.W."\n'
+    '__version__ = "0.0.4"\n__author__ = "C.W."\n'
 
 
 Get from a different branch
@@ -46,7 +52,7 @@ Get from a different branch
     >>> import fs
     >>> git_fs = fs.open_fs("git://github.com/moremobans/pypi-mobans.git?branch=master!/templates")
     >>> git_fs.read("_version.py.jj2")
-    '__version__ = "0.0.3"\n__author__ = "C.W."\n'
+    '__version__ = "0.0.4"\n__author__ = "C.W."\n'
 
 
 Checkout submodules recursively
