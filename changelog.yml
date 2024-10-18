@@ -4,6 +4,12 @@ releases:
 - changes:
   - action: Added
     details:
+    - "`#12`:fix github protocol timeout problem"
+  version: 0.0.4
+  date: 10.11.2024
+- changes:
+  - action: Added
+    details:
     - "`#5`: support offline"
     - "`#7`: add license text"
   version: 0.0.3
