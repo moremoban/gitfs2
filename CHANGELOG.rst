@@ -6,7 +6,8 @@ Change log
 
 **Added**
 
-#. fix github protocol timeout problem
+#. `#12 <https://github.com/moremoban/gitfs2/issues/12>`_:fix github protocol
+   timeout problem
 
 0.0.3 - 11.12.2019
 --------------------------------------------------------------------------------

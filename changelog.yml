@@ -4,7 +4,7 @@ releases:
 - changes:
   - action: Added
     details:
-    - "fix github protocol timeout problem"
+    - "`#12`:fix github protocol timeout problem"
   version: 0.0.4
   date: 10.11.2024
 - changes:
